@@ -229,6 +229,20 @@ fi
 /usr/sbin/php-fpm -F &
 /usr/sbin/nginx -c /etc/nginx/nginx.conf
 
+if [ -z "$YOURLS_PUB_DUMMY" ]; then
+        echo "creating public dummy site"
+        /bin/cat >$YOURLS_PATH/../index.php <<EOL
+<html>
+  <head>
+  <title>hello world</title>
+  </head>
+  <body onload="history.go(-1);">
+  </body>
+</html>
+EOL
+        /bin/chown nginx:nginx $YOURLS_PATH/../index.php
+fi
+
 if [ -f /data/backup/config.php ]; then
     echo "found backup file -> restore"
     source /data/backup/yourls_env.conf
