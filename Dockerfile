@@ -19,7 +19,7 @@ RUN wget https://github.com/YOURLS/YOURLS/archive/master.zip
 RUN unzip master.zip
 RUN mv YOURLS-master /usr/share/nginx/yourls
 RUN chown -R nginx:nginx /usr/share/nginx/yourls
-RUN rm yourls.zip
+RUN rm master.zip
 ADD default.conf /etc/nginx/conf.d/default.conf
 RUN service nginx start && service php-fpm start
 
