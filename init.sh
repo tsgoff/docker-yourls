@@ -204,6 +204,9 @@ SSL
         ssl_prefer_server_ciphers   on;'  /etc/nginx/conf.d/ssl.conf
 
     fi
+    
+    /bin/mv $YOURLS_PATH/plugins /data
+    ln -s /data/plugins/ $YOURLS_PATH/plugins
 
     /bin/env >>  /INSTALLED
     set >> /INSTALLED
