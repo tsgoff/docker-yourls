@@ -102,7 +102,7 @@ EOL
                     echo "set PostgreSQL Database Name to: postgres"
                     DB_NAME=postgres
             fi
-            /bin/cat >$OC_PATH$FILE <<EOL
+            /bin/cat >$YOURLS_PATH$FILE <<EOL
 <?php
 define( 'YOURLS_DB_USER', '$POSTGRESQL_USER' );
 define( 'YOURLS_DB_PASS', '$POSTGRES_ENV_POSTGRES_PASSWORD' );
@@ -127,7 +127,7 @@ EOL
             ;;
         ext_mysql)
             echo 'using external MYSQL DB'
-            /bin/cat >$OC_PATH$FILE <<EOL
+            /bin/cat >$YOURLS_PATH$FILE <<EOL
 <?php
 define( 'YOURLS_DB_USER', '$DB_USER' );
 define( 'YOURLS_DB_PASS', '$DB_PASSWORD' );
@@ -207,7 +207,7 @@ fi
 
 if [ -f /data/backup/config.php ]; then
     echo "found backup file -> restore"
-    source /data/backup/oc_env.conf
+    source /data/backup/yourls_env.conf
     /bin/cp /data/backup/config.php $YOURLS_PATH/config.php
     /bin/chown nginx:nginx $YOURLS_PATH/config.php
 else
