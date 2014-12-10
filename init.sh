@@ -36,7 +36,21 @@ if [ -e /$YOURLS_PATH$FILE ]; then
     else
             echo "DB_PREFIX: $DB_PREFIX"
     fi
-
+    
+    if [ -z "$YOURL_USER" ]; then
+            echo "no YOURL_USER found -> default is admin"
+            YOURL_USER="admin"
+    else
+            echo "YOURL_USER: $YOURL_USER"
+    fi
+    
+    if [ -z "YOURL_PASSWORD" ]; then
+            echo "no YOURL_PASSWORD found -> EXIT"
+            exit 1
+    else
+            echo "found YOURL_PASSWORD"
+    fi
+    
     if [ -z "$MYSQL_ENV_MYSQL_ROOT_PASSWORD" ]; then
             echo "no linked mysql detected"
     else
@@ -87,7 +101,7 @@ define( 'YOURLS_LANG', '' );
 define( 'YOURLS_UNIQUE_URLS', true );
 define( 'YOURLS_PRIVATE', true );
 \$yourls_user_passwords = array(
-        'username' => 'password',
+        '$YOURL_USER' => '$YOURL_PASSWORD',
         );
 define( 'YOURLS_DEBUG', false );
 define( 'YOURLS_URL_CONVERT', 36 );
@@ -122,7 +136,7 @@ define( 'YOURLS_LANG', '' );
 define( 'YOURLS_UNIQUE_URLS', true );
 define( 'YOURLS_PRIVATE', true );
 \$yourls_user_passwords = array(
-        'username' => 'password',
+        '$YOURL_USER' => '$YOURL_PASSWORD',
         );
 define( 'YOURLS_DEBUG', false );
 define( 'YOURLS_URL_CONVERT', 36 );
@@ -147,7 +161,7 @@ define( 'YOURLS_LANG', '' );
 define( 'YOURLS_UNIQUE_URLS', true );
 define( 'YOURLS_PRIVATE', true );
 \$yourls_user_passwords = array(
-        'username' => 'password',
+        '$YOURL_USER' => '$YOURL_PASSWORD',
         );
 define( 'YOURLS_DEBUG', false );
 define( 'YOURLS_URL_CONVERT', 36 );
