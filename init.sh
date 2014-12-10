@@ -24,7 +24,7 @@ if [ -e /$YOURLS_PATH$FILE ]; then
     fi
     
     if [ -z "$YOURLS_SITE" ]; then
-            echo "no YOURLS_SITE name detected"
+            echo "no YOURLS_SITE name detected -> EXIT"
             exit 1
     else
             echo "YOURLS_SITE name: $YOURLS_SITE"
