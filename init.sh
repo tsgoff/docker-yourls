@@ -30,6 +30,13 @@ if [ -e /$YOURLS_PATH$FILE ]; then
             echo "YOURLS_SITE name: $YOURLS_SITE"
     fi
 
+    if [ -z "$DB_PREFIX" ]; then
+            echo "no DB_PREFIX found"
+            DB_PREFIX="yourls_"
+    else
+            echo "DB_PREFIX: $DB_PREFIX"
+    fi
+
     if [ -z "$MYSQL_ENV_MYSQL_ROOT_PASSWORD" ]; then
             echo "no linked mysql detected"
     else
@@ -79,12 +86,12 @@ define( 'YOURLS_HOURS_OFFSET', 0 );
 define( 'YOURLS_LANG', '' );
 define( 'YOURLS_UNIQUE_URLS', true );
 define( 'YOURLS_PRIVATE', true );
-$yourls_user_passwords = array(
+\$yourls_user_passwords = array(
         'username' => 'password',
         );
 define( 'YOURLS_DEBUG', false );
 define( 'YOURLS_URL_CONVERT', 36 );
-$yourls_reserved_URL = array(
+\$yourls_reserved_URL = array(
         'reserved',
 );
 EOL
@@ -114,12 +121,12 @@ define( 'YOURLS_HOURS_OFFSET', 0 );
 define( 'YOURLS_LANG', '' );
 define( 'YOURLS_UNIQUE_URLS', true );
 define( 'YOURLS_PRIVATE', true );
-$yourls_user_passwords = array(
+\$yourls_user_passwords = array(
         'username' => 'password',
         );
 define( 'YOURLS_DEBUG', false );
 define( 'YOURLS_URL_CONVERT', 36 );
-$yourls_reserved_URL = array(
+\$yourls_reserved_URL = array(
         'reserved',
 );
 EOL
@@ -139,12 +146,12 @@ define( 'YOURLS_HOURS_OFFSET', 0 );
 define( 'YOURLS_LANG', '' );
 define( 'YOURLS_UNIQUE_URLS', true );
 define( 'YOURLS_PRIVATE', true );
-$yourls_user_passwords = array(
+\$yourls_user_passwords = array(
         'username' => 'password',
         );
 define( 'YOURLS_DEBUG', false );
 define( 'YOURLS_URL_CONVERT', 36 );
-$yourls_reserved_URL = array(
+\$yourls_reserved_URL = array(
         'reserved',
 );
 EOL
@@ -218,7 +225,7 @@ else
       do
         /bin/sleep 1
       done
-    until /bin/grep installed $YOURLS_PATH/config.php
+    until /bin/grep phpass $YOURLS_PATH/config.php
       do
         /bin/sleep 1
       done
