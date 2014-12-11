@@ -229,7 +229,7 @@ fi
 /usr/sbin/php-fpm -F &
 /usr/sbin/nginx -c /etc/nginx/nginx.conf
 
-if [ -z "$YOURLS_PUB_DUMMY" ]; then
+if [ ! -z "$YOURLS_PUB_DUMMY" ]; then
         echo "creating public dummy site"
         /bin/cat >$YOURLS_PATH/../index.php <<EOL
 <html>
