@@ -39,7 +39,6 @@ Options
  - YOURLS_PUB_DUMMY='true'
  - HTTPS='true'
  - REDIRECT_MAIN_PAGE='http://otherdomain.tld'
- - $YOURLS_URL_CONVERT='36'
 
 Linking to PostgreSQL Container
 -------------------------------  
