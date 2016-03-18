@@ -24,6 +24,7 @@ Options
  - YOURLS_SITE='http://domain.tld'
  - YOURL_USER='admin'
  - YOURL_PASSWORD='mysecretpassword'
+ - YOURLS_URL_CONVERT='36'
 
  - YOURLS_RELATIV_URL_ROOT='/short'
  - FQDN='sh.tld'
