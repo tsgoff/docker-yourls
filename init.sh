@@ -30,6 +30,14 @@ if [ -e /$YOURLS_PATH$FILE ]; then
             echo "YOURLS_SITE name: $YOURLS_SITE"
     fi
 
+    if [ -z "$REDIRECT_MAIN_PAGE" ]; then
+            /bin/sed -i "s/header/#header/g" /usr/share/nginx/yourls/index.php
+    else
+            echo "all access to $YOURLS_SITE will be redirected to $REDIRECT_MAIN_PAGE"
+            /bin/sed -i "s@Location:@Location:$REDIRECT_MAIN_PAGE@g" /usr/share/nginx/yourls/index.php
+            /bin/sed -i "s/#header/header/g" /usr/share/nginx/yourls/index.php
+    fi
+
     if [ -z "$DB_PREFIX" ]; then
             echo "no DB_PREFIX found"
             DB_PREFIX="yourls_"

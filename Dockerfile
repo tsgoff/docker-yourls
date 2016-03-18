@@ -23,6 +23,8 @@ RUN rm master.zip
 ADD default.conf /etc/nginx/conf.d/default.conf
 RUN service nginx start && service php-fpm start
 
+ADD index.php /usr/share/nginx/yourls
+
 ADD init.sh /init.sh
 RUN chmod +x /init.sh
 
