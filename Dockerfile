@@ -2,7 +2,7 @@
  # Centos OwnCloud latest
 
 FROM centos:centos6
-MAINTAINER Tobias Sgoff
+MAINTAINER Gabriel R F
 
 #RUN yum -y update
 RUN yum -y install https://anorien.csc.warwick.ac.uk/mirrors/epel/6/i386/epel-release-6-8.noarch.rpm
