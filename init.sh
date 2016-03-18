@@ -80,6 +80,12 @@ if [ -e /$YOURLS_PATH$FILE ]; then
             DB_TYPE=ext_mysql
     fi
 
+    if [ -z "$HTTPS" ]; then
+            /bin/sed -i "s@fastcgi_param HTTPS on@fastcgi_param HTTPS off@g" /etc/nginx/conf.d/default.conf
+    else
+            /bin/sed -i "s@fastcgi_param HTTPS off@fastcgi_param HTTPS on@g" /etc/nginx/conf.d/default.conf
+    fi
+
     /bin/mkdir /data
     /bin/chown -R nginx:nginx /data
 

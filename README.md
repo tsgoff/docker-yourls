@@ -36,8 +36,9 @@ Options
  - DB_PASSWORD='mysecretpassword'
  - DB_NAME='yourls'
  - YOURLS_PUB_DUMMY='true'
+ - HTTPS='true'
  - REDIRECT_MAIN_PAGE='http://otherdomain.tld'
- 
+
 Linking to PostgreSQL Container
 -------------------------------  
 
