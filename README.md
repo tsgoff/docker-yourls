@@ -4,7 +4,7 @@ Using a Docker Container to run a YOURLS instance with CentOS, Nginx and fpm.
 
 Image available at [Docker Hub](https://hub.docker.com/r/gabrielrf/docker-yourls/).
 
-Visit [YOURLS official website](http://yours.org) for more information.
+Visit [YOURLS official website](http://yourls.org) for more information.
 
 This repository is a fork from [tsgoff/docker-yourls](https://github.com/tsgoff/docker-yourls).
 
