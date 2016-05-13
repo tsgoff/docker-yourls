@@ -8,7 +8,6 @@ RUN apk --update add \
     rm -rf /var/cache/apk/*
 
 ADD src/ /www/src
-ADD index.php /www
 ADD scripts/yourls.sh /scripts/pre-run/01_yourls
 ADD files/hiawatha-yourls.conf /etc/hiawatha/conf.d/yourls.conf
 
