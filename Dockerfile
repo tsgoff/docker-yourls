@@ -7,7 +7,6 @@ RUN apk --update add \
     git && \
     rm -rf /var/cache/apk/*
 
-ADD src/ /www/src
 ADD scripts/yourls.sh /scripts/pre-run/01_yourls
 ADD files/hiawatha-yourls.conf /etc/hiawatha/conf.d/yourls.conf
 
