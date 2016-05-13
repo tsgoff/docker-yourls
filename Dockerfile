@@ -3,7 +3,7 @@ MAINTAINER Mitchell Hewes <me@mitcdh.com>
 
 RUN apk --update add \
     curl \
-    php-gd \
+    php5-gd \
     git && \
     rm -rf /var/cache/apk/*
 
