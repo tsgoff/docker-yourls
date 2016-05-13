@@ -7,7 +7,7 @@ RUN apk --update add \
     git && \
     rm -rf /var/cache/apk/*
 
-ADD scripts/yourls.sh /scripts/pre-run/01_yourls
+ADD files/yourls.sh /scripts/pre-run/01_yourls
 ADD files/hiawatha-yourls.conf /etc/hiawatha/conf.d/yourls.conf
 
 RUN git clone -b master https://github.com/YOURLS/YOURLS.git /www
