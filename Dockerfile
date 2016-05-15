@@ -4,6 +4,7 @@ MAINTAINER Mitchell Hewes <me@mitcdh.com>
 RUN apk --update add \
     curl \
     php5-gd \
+    php5-pdo_mysql \
     git && \
     rm -rf /var/cache/apk/*
 

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 FILE=config.php
-YOURLS_PATH=/www/
+YOURLS_PATH=/www/user/
 
 if [ -e /$YOURLS_PATH$FILE ]; then
 echo "restart check: installed"
