@@ -84,5 +84,6 @@ define( 'YOURLS_URL_CONVERT', 36 );
         'reserved',
 );
 EOL
-
+    chmod 664 $YOURLS_PATH$FILE
 fi
+
