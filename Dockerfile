@@ -11,10 +11,10 @@ RUN apk --update add \
 ADD files/yourls.sh /scripts/pre-run/01_yourls
 ADD files/hiawatha-yourls.conf /etc/hiawatha/conf.d/yourls.conf
 
-RUN git clone -b master https://github.com/YOURLS/YOURLS.git /www
+RUN git clone -b master https://github.com/YOURLS/YOURLS.git /yourls-src
 
 WORKDIR /www
-VOLUME /yourls-data
+VOLUME /www/user
 
 EXPOSE 80
 
