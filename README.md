@@ -27,6 +27,7 @@ mitcdh/yourls
 
 ### Structure
 * `/www`: Web root
+* `/yourls-data`: yourls user directory
 
 ### Exposed Ports
 * `80`: http web server

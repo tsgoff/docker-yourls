@@ -14,6 +14,7 @@ ADD files/hiawatha-yourls.conf /etc/hiawatha/conf.d/yourls.conf
 RUN git clone -b master https://github.com/YOURLS/YOURLS.git /www
 
 WORKDIR /www
+VOLUME /yourls-data
 
 EXPOSE 80
 
