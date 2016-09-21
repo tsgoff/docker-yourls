@@ -97,6 +97,9 @@ EOL
         chmod 664 ${YOURLS_USER}/${CONFIG}
     fi
     if [ -z "$REDIRECT_SITE" ]; then
+        echo "no REDIRECT_SITE name detected"
+    else
+        echo "REDIRECT_SITE name: $REDIRECT_SITE"
         /bin/cat >${YOURLS_PATH}/${INDEX} <<EOL
 <?php
 header('Location:${REDIRECT_SITE}');
@@ -104,5 +107,4 @@ header('Location:${REDIRECT_SITE}');
 EOL
         chmod 664 ${YOURLS_PATH}/${INDEX}
     fi
-
 fi
