@@ -11,6 +11,7 @@
 * `DB_USER`='yourls'
 * `DB_PASSWORD`='mysecretpassword'
 * `DB_NAME`='yourls'
+* `REDIRECT_SITE`='http://mysite.tld'
 
 ### Usage
 ````

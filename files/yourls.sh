@@ -1,20 +1,22 @@
 #!/bin/sh
 
-FILE=config.php
-YOURLS_PATH=/www/user
+CONFIG=config.php
+INDEX=index.php
+YOURLS_PATH=/www
+YOURLS_USER=${YOURLS_PATH}/user
 
-if [ -e $YOURLS_PATH/$FILE ]; then
+if [ -e ${YOURLS_USER}/${CONFIG} ]; then
     echo "restart check: installed"
 else
     echo "starting installation"
     echo "creating user directory"
-    mv $YOURLS_PATH ${YOURLS_PATH}-dist
-    ln -sf /yourls-data $YOURLS_PATH
-    if [ -e $YOURLS_PATH/$FILE ]; then
+    mv $YOURLS_USER ${YOURLS_USER}-dist
+    ln -sf /yourls-data $YOURLS_USER
+    if [ -e ${YOURLS_USER}/${CONFIG} ]; then
         echo "config check: existing config"
     else
         echo "config check: starting from dist"
-        cp -rpn ${YOURLS_PATH}-dist/* ${YOURLS_PATH}
+        cp -rpn ${YOURLS_USER}-dist/* ${YOURLS_USER}
         if [ -z "$DB_USER" ]; then
             echo "no DB_USER found -> EXIT"
             exit 1
@@ -71,7 +73,7 @@ else
             echo "YOURLS_SITE name: $YOURLS_SITE"
         fi
 
-        /bin/cat >$YOURLS_PATH/$FILE <<EOL
+        /bin/cat >${YOURLS_USER}/${CONFIG} <<EOL
 <?php
 define( 'YOURLS_DB_USER', '$DB_USER' );
 define( 'YOURLS_DB_PASS', '$DB_PASSWORD' );
@@ -92,7 +94,15 @@ define( 'YOURLS_URL_CONVERT', 36 );
         'reserved',
 );
 EOL
-        chmod 664 $YOURLS_PATH/$FILE
+        chmod 664 ${YOURLS_USER}/${CONFIG}
     fi
-fi
+    if [ -z "$REDIRECT_SITE" ]; then
+        /bin/cat >${YOURLS_PATH}/${INDEX} <<EOL
+<?php
+header('Location:${REDIRECT_SITE}');
+?>
+EOL
+        chmod 664 ${YOURLS_PATH}/${INDEX}
+    fi
 
+fi
