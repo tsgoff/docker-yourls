@@ -7,7 +7,7 @@ errors stderr
 root /www/public
 git {
 	repo https://github.com/seblucas/cops.git
-	clonepath /www/yourls-src/
+	path /www/yourls-src
 	interval 86400
 	then /www/yourls.sh
 }
