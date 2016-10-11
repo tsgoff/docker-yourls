@@ -6,11 +6,11 @@ RUN apk --update add \
     php5-pdo \
     php5-pdo_mysql && \
     rm -rf /var/cache/apk/*
+VOLUME /www/public/user
 
 ADD files/yourls.sh /www/yourls.sh
 ADD files/Caddyfile /scripts/Caddyfile
-RUN chmod +x /www/yourls.sh
+RUN chmod +x /www/yourls.sh && chown -R web-srv:www-data /www/public
 
-VOLUME /www/public/user
 
 EXPOSE 2015
