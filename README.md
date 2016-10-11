@@ -1,6 +1,6 @@
 # Docker Yourls
 
-* Docker image to start a yourls container with Alpine, Hiawatha, fpm, and an external mysql host.
+* Docker image to start a yourls container with Alpine, Caddy, fpm, and an external mysql host.
 
 ### Environment Variables
 * `YOURLS_SITE`='http://domain.tld'
@@ -27,11 +27,12 @@ mitcdh/yourls
 ````
 
 ### Structure
-* `/www`: Web root
-* `/yourls-data`: yourls user directory
+* `/www/public`: Web root
+* `/www/public/user`: yourls user directory
+* `/scripts/Caddyfile`: base caddy file
 
 ### Exposed Ports
-* `80`: http web server
+* `2015`: http web server
 
 ### Credits
 * [bios/docker-yourls](https://hub.docker.com/r/bios/docker-yourls/)

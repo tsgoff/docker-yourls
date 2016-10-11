@@ -2,19 +2,13 @@
 
 CONFIG=config.php
 INDEX=index.php
-INSTALL_TEST=yourls-loader.php
-YOURLS_SRC=/yourls-src
-YOURLS_PATH=/www
+YOURLS_SRC=/www/yourls-src
+YOURLS_PATH=/www/public
 YOURLS_USER=${YOURLS_PATH}/user
 
 # installation check
-if [ -e "${YOURLS_PATH}/${INSTALL_TEST}" ]; then
-    echo "restart check: installed"
-else
-    echo "restart check: installing yourls from src"
-    mv "${YOURLS_SRC}/user" "${YOURLS_SRC}/user-dist"
-    cp -rpu "${YOURLS_SRC}/." "${YOURLS_PATH}"
-fi
+echo "installing yourls"
+cp -rpf "${YOURLS_SRC}/." "${YOURLS_PATH}"
 
 # config check
 if [ -e "${YOURLS_USER}/${CONFIG}" ]; then
