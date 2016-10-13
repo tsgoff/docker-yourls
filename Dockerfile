@@ -2,8 +2,6 @@ FROM mitcdh/caddy-php
 MAINTAINER Mitchell Hewes <me@mitcdh.com>
 
 RUN apk --update add \
-    php5-gd \
-    php5-pdo \
     php5-pdo_mysql && \
     rm -rf /var/cache/apk/*
 VOLUME /www/public/user
