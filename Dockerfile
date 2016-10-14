@@ -10,6 +10,6 @@ COPY files/yourls-config.sh /caddy-bootstrap/pre-run/01_yourls-config
 COPY files/Caddyfile /caddy-bootstrap/Caddyfile
 COPY files/yourls-install.sh /www/yourls-install.sh
 RUN chmod 500 /caddy-bootstrap/pre-run/01_yourls-config \
- && chown www-data:www-data /www/public
+ && chown -R www-data:www-data /www/public
 
 EXPOSE 2015
