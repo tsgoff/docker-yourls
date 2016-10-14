@@ -2,20 +2,13 @@
 
 CONFIG=config.php
 INDEX=index.php
-YOURLS_SRC=/www/yourls-src
 YOURLS_PATH=/www/public
 YOURLS_USER=${YOURLS_PATH}/user
-
-# installation check
-echo "installing yourls"
-cp -rpf "${YOURLS_SRC}/." "${YOURLS_PATH}"
 
 # config check
 if [ -e "${YOURLS_USER}/${CONFIG}" ]; then
     echo "config check: existing config"
 else
-    echo "config check: starting from dist"
-    cp -rpu "${YOURLS_USER}-dist/." "${YOURLS_USER}"
     if [ -z "$DB_USER" ]; then
         echo "no DB_USER found -> EXIT"
         exit 1
@@ -93,7 +86,8 @@ define( 'YOURLS_URL_CONVERT', 36 );
         'reserved',
 );
 EOL
-    chmod 664 "${YOURLS_USER}/${CONFIG}"
+    chmod 660 "${YOURLS_USER}/${CONFIG}"
+    chown www-data:www-data "${YOURLS_USER}/${CONFIG}"
 fi
 
 # index.php redirect check

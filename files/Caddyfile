@@ -9,7 +9,7 @@ git {
 	repo https://github.com/YOURLS/YOURLS.git
 	path ../yourls-src
 	interval 86400
-	then /www/yourls.sh
+	then /bin/sh /www/yourls-install.sh
 }
 rewrite / {
     to {uri} {uri}/ /yourls-loader.php?{query}
