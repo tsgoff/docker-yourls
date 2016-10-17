@@ -12,7 +12,7 @@ COPY files/Caddyfile /caddy-bootstrap/Caddyfile
 COPY files/yourls-install.sh /www/yourls-install.sh
 
 RUN chmod 500 /caddy-bootstrap/pre-run/* \
- && chown www-data:www-data /www/public
+ && install -o www-data -g www-data -d /www/public/user
 
 VOLUME /www/public/user
 EXPOSE 2015
