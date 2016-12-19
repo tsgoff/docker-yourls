@@ -1,4 +1,4 @@
-FROM mitcdh/caddy-php:php7
+FROM mitcdh/caddy-php
 MAINTAINER Mitchell Hewes <me@mitcdh.com>
 
 RUN apk --update add \
