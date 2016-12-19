@@ -1,31 +1,19 @@
+FROM mitcdh/caddy-php
+MAINTAINER Mitchell Hewes <me@mitcdh.com>
 
- # Centos OwnCloud latest
+RUN apk --update add \
+    php7-pdo_mysql && \
+    rm -rf /var/cache/apk/*
 
-FROM centos:centos6
-MAINTAINER Tobias Sgoff
+COPY files/yourls-vol.sh /caddy-bootstrap/pre-run/01_yourls-vol
+COPY files/yourls-config.sh /caddy-bootstrap/pre-run/02_yourls-config
 
-#RUN yum -y update
-RUN yum -y install https://anorien.csc.warwick.ac.uk/mirrors/epel/6/i386/epel-release-6-8.noarch.rpm
-RUN yum -y install http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+COPY files/Caddyfile /caddy-bootstrap/Caddyfile
+COPY files/yourls-install.sh /www/yourls-install.sh
 
-RUN yum -y install nginx wget tar bzip2 unzip
-RUN yum -y install php-fpm php-gd php-mysqlnd php-mbstring php-xml php-ldap --enablerepo=remi
-RUN sed -i 's/user = apache/user = nginx/' /etc/php-fpm.d/www.conf
-RUN sed -i 's/group = apache/group = nginx/' /etc/php-fpm.d/www.conf
-RUN yum -y update --enablerepo=remi
-RUN chown nginx:nginx /var/lib/php/session/
+RUN chmod 500 /caddy-bootstrap/pre-run/* \
+ && install -o www-data -g www-data -d /www/public \
+ && install -o www-data -g www-data -d /www/public/user
 
-RUN wget https://github.com/YOURLS/YOURLS/archive/master.zip
-RUN unzip master.zip
-RUN mv YOURLS-master /usr/share/nginx/yourls
-RUN chown -R nginx:nginx /usr/share/nginx/yourls
-RUN rm master.zip
-ADD default.conf /etc/nginx/conf.d/default.conf
-RUN service nginx start && service php-fpm start
-
-ADD init.sh /init.sh
-RUN chmod +x /init.sh
-
-EXPOSE 80
-
-CMD ["/init.sh"]
+VOLUME /www/public/user
+EXPOSE 2015
