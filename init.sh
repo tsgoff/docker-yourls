@@ -17,7 +17,7 @@ if [ -e /$YOURLS_PATH$FILE ]; then
             /bin/mkdir -p /usr/share/nginx/yourls/$YOURLS_RELATIV_URL_ROOT
             /bin/mv /usr/share/nginx/RWlzYW9iYWluZzBpZXNoCg/* /usr/share/nginx/RWlzYW9iYWluZzBpZXNoCg/.??* /usr/share/nginx/yourls/$YOURLS_RELATIV_URL_ROOT
             /bin/rm -rf /usr/share/nginx/RWlzYW9iYWluZzBpZXNoCg
-            YOURLS_PATH=/usr/share/nginx/owncloud/$YOURLS_RELATIV_URL_ROOT/config/
+            YOURLS_PATH=/usr/share/nginx/yourls/$YOURLS_RELATIV_URL_ROOT/config/
             /bin/chown -R nginx:nginx /usr/share/nginx/yourls/
             #/bin/echo "<?php header(\"Location: $YOURLS_RELATIV_URL_ROOT\"); die(); ?>" > /usr/share/nginx/yourls/index.php
 
