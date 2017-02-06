@@ -36,6 +36,7 @@ Options
  - DB_PASSWORD='mysecretpassword'
  - DB_NAME='yourls'
  - YOURLS_PUB_DUMMY='true'
+ - HTTPS='true'
  
 Linking to PostgreSQL Container
 -------------------------------  
