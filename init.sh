@@ -30,6 +30,14 @@ if [ -e /$YOURLS_PATH$FILE ]; then
             echo "YOURLS_SITE name: $YOURLS_SITE"
     fi
 
+    if [ -z "$REDIRECT_MAIN_PAGE" ]; then
+            /bin/sed -i "s/header/#header/g" /usr/share/nginx/yourls/index.php
+    else
+            echo "all access to $YOURLS_SITE will be redirected to $REDIRECT_MAIN_PAGE"
+            /bin/sed -i "s@Location:@Location:$REDIRECT_MAIN_PAGE@g" /usr/share/nginx/yourls/index.php
+            /bin/sed -i "s/#header/header/g" /usr/share/nginx/yourls/index.php
+    fi
+
     if [ -z "$DB_PREFIX" ]; then
             echo "no DB_PREFIX found"
             DB_PREFIX="yourls_"
@@ -72,6 +80,12 @@ if [ -e /$YOURLS_PATH$FILE ]; then
             DB_TYPE=ext_mysql
     fi
 
+    if [ -z "$HTTPS" ]; then
+            /bin/sed -i "s@fastcgi_param HTTPS on@fastcgi_param HTTPS off@g" /etc/nginx/conf.d/default.conf
+    else
+            /bin/sed -i "s@fastcgi_param HTTPS off@fastcgi_param HTTPS on@g" /etc/nginx/conf.d/default.conf
+    fi
+
     /bin/mkdir /data
     /bin/chown -R nginx:nginx /data
 
@@ -104,7 +118,7 @@ define( 'YOURLS_PRIVATE', true );
         '$YOURL_USER' => '$YOURL_PASSWORD',
         );
 define( 'YOURLS_DEBUG', false );
-define( 'YOURLS_URL_CONVERT', 36 );
+define( 'YOURLS_URL_CONVERT', '$YOURLS_URL_CONVERT' );
 \$yourls_reserved_URL = array(
         'reserved',
 );

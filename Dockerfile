@@ -2,7 +2,7 @@
  # Centos OwnCloud latest
 
 FROM centos:centos6
-MAINTAINER Tobias Sgoff
+MAINTAINER Gabriel R F
 
 #RUN yum -y update
 RUN yum -y install https://anorien.csc.warwick.ac.uk/mirrors/epel/6/i386/epel-release-6-8.noarch.rpm
@@ -22,6 +22,8 @@ RUN chown -R nginx:nginx /usr/share/nginx/yourls
 RUN rm master.zip
 ADD default.conf /etc/nginx/conf.d/default.conf
 RUN service nginx start && service php-fpm start
+
+ADD index.php /usr/share/nginx/yourls
 
 ADD init.sh /init.sh
 RUN chmod +x /init.sh
