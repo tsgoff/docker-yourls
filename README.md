@@ -1,6 +1,12 @@
 docker-yourls
 ========
 
+
+legacy note
+========
+please use the official version: https://hub.docker.com/_/yourls
+
+
 http://yourls.org/#About  
 https://registry.hub.docker.com/u/bios/docker-yourls/
 
